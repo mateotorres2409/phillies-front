@@ -20,4 +20,4 @@ jobs:
               aws-region: ${{ secrets.AWS_REGION }}
           - name: Sync files to S3 bucket
             run: |
-              aws s3 cp --recursive s3://${{ secrets.BUCKET_DIR }} ./front
+              aws s3 cp --recursive ./front s3://${{ secrets.BUCKET_DIR }}
