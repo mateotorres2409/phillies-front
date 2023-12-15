@@ -2,22 +2,24 @@ name: CrearImagen
 on: 
     push:
         branches: [ "main" ]
+        paths: ["back/**",".github/workflows/docker-image.yml"]
+    workflow_dispatch: 
 
 jobs:
     build:
         runs-on: ubuntu-latest
         steps:
           - name: Check out the repo
-            uses: actions/checkout@v3
+            uses: actions/checkout@v4
           - name: Log in to Docker Hub
             uses: docker/login-action@f4ef78c080cd8ba55a85445d5b36e214a81df20a
             with:
-              username: eduaranaya94  #Pendiente crear el secreto
-              password: dckr_pat_A5gS8cPbs-BZA2RJ1Zjj28XAYeA # Pendiente Crear el secreto
-          - run: ls -lah
+              username: ${{ secrets.USER_DOCKER_HUB }}  
+              password: ${{ secrets.KEY_DOCKER_HUB }} 
           - name: Build and push
             uses: docker/build-push-action@v5
             with:
-              context: "back/docker/Dockerfile"
+              context: "."
+              file: "./back/docker/Dockerfile"
               push: true
-              tags: philadelpfia-phillips:latest
+              tags: eduaranaya94/philadelphiaphillips:${{ github.run_id}}
