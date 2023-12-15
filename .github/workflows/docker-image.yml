@@ -2,7 +2,8 @@ name: CrearImagen
 on: 
     push:
         branches: [ "main" ]
-        paths: ["back",".github/workflows/docker-image.yml"]
+        paths: ["back/**",".github/workflows/docker-image.yml"]
+    workflow_dispatch: 
 
 jobs:
     build:
