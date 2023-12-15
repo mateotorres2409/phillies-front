@@ -1,0 +1,55 @@
+openapi: 3.0.3
+info:
+  title: Calculator - OpenAPI 3.0
+  description: |-
+    Basic operation Math
+  version: 0.0.1
+paths:
+  /:
+    post:
+      summary: Operations
+      description: Basic operation Math
+      operationId: operations
+      requestBody:
+        description: Basic operation Math
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/requestOperation'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/responseOperation'  
+components:
+  schemas:
+    requestOperation:
+      type: object
+      properties:
+        var_1:
+          type: integer
+          format: int64
+          example: 10
+        var_2:
+          type: integer
+          format: int64
+          example: 198772
+        operation:
+          type: string
+          description: Operation Math
+          example: Addition
+          enum:
+            - Addition
+            - Subtraction
+            - Multiplication
+            - Division
+    responseOperation:
+      type: object
+      properties:
+        result:
+          type: integer
+          format: int64
+          example: 198782

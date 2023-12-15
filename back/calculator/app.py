@@ -1,17 +1,14 @@
-from flask import Flask, render_template, request
+from flask import Flask, jsonify, request
 
 app = Flask(__name__)
-# app.config.from_object(__name__)
-
-@app.route('/')
-def welcome():
-    return render_template('form.html')
 
 @app.route('/', methods=['POST'])
 def result():
-    var_1 = request.form.get("var_1", type=int, default=0)
-    var_2 = request.form.get("var_2", type=int, default=0)
-    operation = request.form.get("operation")
+    rq = request.json
+    var_1 = rq.get('var_1')
+    var_2 = rq.get('var_2')
+    operation = rq.get('operation')
+    
     if(operation == 'Addition'):
         result = var_1 + var_2
     elif(operation == 'Subtraction'):
@@ -25,8 +22,10 @@ def result():
         	result = var_1 / var_2
     else:
         result = 0
-    entry = result
-    return render_template('form.html', entry=entry)
+        
+    rs = app.make_response(jsonify({ "result": result}))
+    rs.headers['content-type'] = 'application/json'
+    return rs
 
 if __name__ == '__main__':
     app.run(debug=True,port=80)
