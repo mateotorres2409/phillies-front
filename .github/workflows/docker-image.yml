@@ -21,4 +21,4 @@ jobs:
               context: "."
               file: "./back/docker/Dockerfile"
               push: true
-              tags: philadelpfia-phillips:${{github.run_id}}
+              tags: eduaranaya94/philadelphiaphillips:${{ github.run_id}}
