@@ -7,8 +7,8 @@ CORS(app)
 @app.route('/', methods=['POST'])
 def result():
     rq = request.json
-    var_1 = rq.get('var_1')
-    var_2 = rq.get('var_2')
+    var_1 = int(rq.get('var_1'))
+    var_2 = int(rq.get('var_2'))
     operation = rq.get('operation')
     
     if(operation == 'Addition'):
