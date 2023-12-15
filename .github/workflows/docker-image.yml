@@ -12,8 +12,8 @@ jobs:
           - name: Log in to Docker Hub
             uses: docker/login-action@f4ef78c080cd8ba55a85445d5b36e214a81df20a
             with:
-              username: eduaranaya94  #Pendiente crear el secreto
-              password: dckr_pat_A5gS8cPbs-BZA2RJ1Zjj28XAYeA # Pendiente Crear el secreto
+              username: ${{ secrets.USER_DOCKER_HUB }}  
+              password: ${{ secrets.KEY_DOCKER_HUB }} 
           - run: ls -lah
           - name: Build and push
             uses: docker/build-push-action@v5
