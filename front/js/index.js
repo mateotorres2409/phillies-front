@@ -22,9 +22,9 @@ async function callApiCalculator(numA, numB, opt, total) {
         operation: opt
     };
 
-    await fetch('http://.......', {
+    await fetch('http://tf-lb-20231215172408577000000004-144800990.us-east-1.elb.amazonaws.com', {
         method: 'POST',
-        mode: 'cors',
+        mode: 'no-cors',
         cache: 'no-cache',
         headers: {
             'Content-Type': 'application/json'
