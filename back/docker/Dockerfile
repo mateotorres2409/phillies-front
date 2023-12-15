@@ -1,5 +1,6 @@
 FROM python:alpine3.19
 RUN pip install flask
+RUN pip install flask-cors
 ENV FLASK_APP=app.py
 COPY back/calculator/app.py /app/app.py
 WORKDIR /app
