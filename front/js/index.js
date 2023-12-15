@@ -1,4 +1,4 @@
-const api = "http://tf-lb-20231215183230597900000004-914111938.us-east-1.elb.amazonaws.com"
+const api = "http://tf-lb-20231215203320637300000004-698336987.us-east-1.elb.amazonaws.com"
 let forn = document.getElementById("subForm");
 
 forn.addEventListener("submit", async (e) => {
