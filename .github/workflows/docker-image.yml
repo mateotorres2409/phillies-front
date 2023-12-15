@@ -2,6 +2,7 @@ name: CrearImagen
 on: 
     push:
         branches: [ "main" ]
+        paths: ["back",".github/workflows/docker-image.yml"]
 
 jobs:
     build:
@@ -14,11 +15,10 @@ jobs:
             with:
               username: ${{ secrets.USER_DOCKER_HUB }}  
               password: ${{ secrets.KEY_DOCKER_HUB }} 
-          - run: ls -lah
           - name: Build and push
             uses: docker/build-push-action@v5
             with:
               context: "."
               file: "./back/docker/Dockerfile"
               push: true
-              tags: philadelpfia-phillips:latest
+              tags: philadelpfia-phillips:${{github.run_id}}
